@@ -1,0 +1,42 @@
+version: '3.1'
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+    labels:
+      NAME: "postgres-docker-compose"  
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
+  redis:
+    image: bitnami/redis:latest
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes    
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis:/bitnami/redis/data
+    labels:
+      NAME: "redis-docker-compose"
+
+  rabbitmq:
+    image: "rabbitmq:3.8-management"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "ERLANG_COOKIE"
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    labels:
+      NAME: "rabbitmq-docker-compose"
+    volumes:
+      - ./rabbitmq:/var/lib/rabbitmq
+      - ./rabbitmq:/etc/rabbitmq/
+      - ./rabbitmq_enabled_plugins:/etc/rabbitmq/enabled_plugins
