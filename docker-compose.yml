@@ -9,7 +9,7 @@ services:
     labels:
       NAME: "postgres-docker-compose"  
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - ./postgres/data:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
@@ -19,8 +19,6 @@ services:
       - ALLOW_EMPTY_PASSWORD=yes    
     ports:
       - "6379:6379"
-    volumes:
-      - ./redis:/bitnami/redis/data
     labels:
       NAME: "redis-docker-compose"
 
@@ -37,6 +35,6 @@ services:
     labels:
       NAME: "rabbitmq-docker-compose"
     volumes:
-      - ./rabbitmq:/var/lib/rabbitmq
-      - ./rabbitmq:/etc/rabbitmq/
-      - ./rabbitmq_enabled_plugins:/etc/rabbitmq/enabled_plugins
+      - ./rabbitmq/data:/var/lib/rabbitmq
+      - ./rabbitmq/data:/etc/rabbitmq/
+      - ./rabbitmq/rabbitmq_enabled_plugins:/etc/rabbitmq/enabled_plugins
