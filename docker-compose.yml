@@ -1,6 +1,19 @@
 version: '3.1'
 
 services:
+  mongodb:
+    image: mongo:4.2
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    labels:
+      NAME: "mongodb-docker-compose"
+    volumes:
+      - './mongodb:/data/db'
+
   postgres:
     image: postgres
     restart: always
@@ -16,7 +29,7 @@ services:
   redis:
     image: bitnami/redis:latest
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes    
+      - ALLOW_EMPTY_PASSWORD=yes
     ports:
       - "6379:6379"
     labels:
