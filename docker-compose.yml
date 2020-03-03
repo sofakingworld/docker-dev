@@ -1,6 +1,19 @@
 version: "3.1"
 
 services:
+  clickhouse:
+    image: yandex/clickhouse-server
+    restart: always
+    ports:
+      - 8123:8123
+      - 9000:9000
+      - 9009:9009
+    labels:
+      NAME: "clickhouse-docker-compose"
+    volumes:
+      - "./clickhouse/data:/var/lib/clickhouse"
+      - "./clickhouse/data:yandex/clickhouse-server"
+
   mongodb:
     image: mongo:4.2
     restart: always
@@ -52,4 +65,3 @@ services:
     volumes:
       - ./rabbitmq/data:/var/lib/rabbitmq
       - ./rabbitmq/data:/etc/rabbitmq/
-      - ./rabbitmq/rabbitmq_enabled_plugins:/etc/rabbitmq/enabled_plugins
