@@ -2,3 +2,4 @@
 /rabbitmq
 /redis
 /mongodb
+/clickhouse
