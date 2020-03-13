@@ -12,7 +12,6 @@ services:
       NAME: "clickhouse-docker-compose"
     volumes:
       - "./clickhouse/data:/var/lib/clickhouse"
-      - "./clickhouse/data:yandex/clickhouse-server"
 
   mongodb:
     image: mongo:4.2
