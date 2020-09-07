@@ -30,5 +30,5 @@ docker-compose down
 # Подключение к работающему контейнеру (по label из docker-compose)
 
 ```
-docker exec -it dockerdev_postgres_1 bash
+docker exec -it docker-dev_postgres_1 bash
 ```
