@@ -3,3 +3,4 @@
 /redis
 /mongodb
 /clickhouse
+/neo4j
