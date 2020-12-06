@@ -30,11 +30,8 @@ services:
       - "./clickhouse/data:/var/lib/clickhouse"
 
   mongodb:
-    image: mongo:4.2
+    image: mongo:3.4
     restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
     ports:
       - 27017:27017
     labels:
@@ -43,7 +40,7 @@ services:
       - "./mongodb:/data/db"
 
   postgres:
-    image: postgres
+    image: postgres:10
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
