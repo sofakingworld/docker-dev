@@ -18,7 +18,7 @@ docker-compose up -d
 ## Выборочный запуск
 
 ```
-docker-compose up postgres -d 
+docker-compose up -d postgres
 ```
 
 # Отключение контейнеров
