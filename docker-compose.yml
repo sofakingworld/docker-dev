@@ -40,7 +40,7 @@ services:
       - "./mongodb:/data/db"
 
   postgres:
-    image: postgres:10
+    image: postgres:15
     restart: always
     environment:
       POSTGRES_PASSWORD: postgres
