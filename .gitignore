@@ -2,5 +2,5 @@
 /rabbitmq
 /redis
 /mongodb
-/clickhouse
+/clickhouse_203410/data
 /neo4j

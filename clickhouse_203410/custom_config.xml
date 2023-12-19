@@ -1,0 +1,33 @@
+<!-- config.d/custom_config.xml -->
+
+<yandex>
+    <logger>
+        <!--  Clickhouse is logging far too much data into both the system tables and log files. It's
+        the additional logging work which is using up extra resources. -->
+
+        <!-- If something goes wrong, we'll see it anyway. -->
+        <level>warning</level>
+        <!-- This setting make logs through to the console for easier debugging. It can be seen
+        using docker-compose logs. -->
+        <console>true</console>
+
+        <count>2</count>
+    </logger>
+
+    <!-- Set limit on number of open files (default: maximum). This setting makes sense on Mac OS X
+    because getrlimit() fails to retrieve correct maximum value. -->
+    <max_open_files>524288</max_open_files>
+
+    <!-- Disable logging -->
+    <query_thread_log remove="remove" />
+    <query_log remove="remove" />
+    <text_log remove="remove" />
+    <trace_log remove="remove" />
+    <query_thread_log remove="remove" />
+    <metric_log remove="remove" />
+    <asynchronous_metric_log remove="remove" />
+
+    <!-- Required for newer versions of Clickhouse -->
+    <session_log remove="remove" />
+    <part_log remove="remove" />
+</yandex>

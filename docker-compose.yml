@@ -17,8 +17,8 @@ services:
       - "./neo4j/plugins:/plugins"
       - "./neo4j/import:/var/lib/neo4j/import"
 
-  clickhouse:
-    image: yandex/clickhouse-server
+  clickhouse_20.3.4.10:
+    image: yandex/clickhouse-server:20.3.4.10
     restart: always
     ports:
       - 8123:8123
@@ -27,8 +27,9 @@ services:
     labels:
       NAME: "clickhouse-docker-compose"
     volumes:
-      - "./clickhouse/data:/var/lib/clickhouse"
-
+      - "./clickhouse_203410/data:/var/lib/clickhouse"
+      - "./clickhouse_203410/custom_config.xml:/etc/clickhouse-server/config.d/custom_config.xml"
+      - "./clickhouse_203410/custom_users.xml:/etc/clickhouse-server/users.d/custom_users.xml"
   mongodb:
     image: mongo:3.4
     restart: always
